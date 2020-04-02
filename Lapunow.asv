@@ -49,12 +49,13 @@ hold on
 mesh(Y1,Y2,detL)
 patch([20 -20 -20 20],[20 20 -20 -20],'r','FaceAlpha',0.2)
 plot3(0,-7,3,'b+','MarkerSize',6,'LineWidth',2);
-view(39,37);
 xlabel('y_1')
 ylabel('y_2')
 zlabel('det(L)')
 hold off
 grid on;
+
+print(1, '-dpng','zakres2', '-r800')
 
 
 %% Zadanie 2 Obliczanie K i Ap
@@ -75,7 +76,6 @@ lambda=eig(Ap);
 %% Zadanie 2 Wykresy z Simulinka
 out = sim('Lapsim2');
 
-figure(2)
 subplot(2,1,1)
 plot(out.ScopeData.time,out.ScopeData.signals(1,1).values);
 ylim([-0.1 0.4])
@@ -145,28 +145,27 @@ lambda=eig(Ap);
 
 %% Zadanie 3 Wykresy z Simulinka
 
-t = 5;
-out = sim('Lapsim3');
-
-figure(4)
 subplot(3,1,1)
 plot(out.ScopeData.time,out.ScopeData.signals(1,1).values);
+ylim([-0.8 0.1])
 xlabel('t (s)');
-ylabel('\theta (rad)');
+ylabel('\theta');
 set(gca,'LooseInset',get(gca,'TightInset'));
 grid on;
 
 subplot(3,1,2)
 plot(out.ScopeData.time,out.ScopeData.signals(1,2).values);
+ylim([-0.8 0.2])
 xlabel('t (s)');
-ylabel('\omega (rad/s)');
+ylabel('\omega');
 set(gca,'LooseInset',get(gca,'TightInset'));
 grid on;
 
 subplot(3,1,3)
 plot(out.ScopeData.time,out.ScopeData.signals(1,3).values);
+ylim([-0.1 0.5])
 xlabel('t (s)'); 
-ylabel('\tau (Nm)');
+ylabel('\tau');
 set(gca,'LooseInset',get(gca,'TightInset'));
 grid on;
 
@@ -174,14 +173,16 @@ grid on;
 
 
 %% Zadanie 3 Model F15 w STL
+t = 5;
+
 fv = stlread('F-15_jet_plane.stl');
 %fv.vertices = fv.vertices*[cos(pi),0,sin(pi);0 1 0; -sin(pi) 0, cos(pi)];
 ftmp = fv;
 
 %% Zadanie 3 Wizualizacja F15 i symulacja ruchu
 
-figure(5)
-set(5,'Position', [200 200 1300 600]);
+figure('Position', [200 200 1300 600])
+
 set(gca, 'LooseInset', [0,0,0,0]);
 grid on;
 time = out.ScopeData.time;
@@ -191,7 +192,7 @@ tau = out.ScopeData.signals(1,3).values;
 ctrl = out.ScopeData.signals(1,4).values;
 
 for r = 1:5:length(omega)
-set(0,'CurrentFigure',5)
+
 title(strcat('t =',{' '},string((r*0.01)-0.01),'s'));
 
 subplot(4,2,1)
