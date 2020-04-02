@@ -90,8 +90,6 @@ xlabel('t (s)');
 ylabel('x_2');
 grid on;
 
-print(1, '-dpng','odpowiedzi2', '-r800')
-
 
 %% Zadanie 3 Obliczanie L
 
