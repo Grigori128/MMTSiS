@@ -90,7 +90,6 @@ xlabel('t (s)');
 ylabel('x_2');
 grid on;
 
-
 %% Zadanie 3 Obliczanie L
 
 clear variables
@@ -141,9 +140,31 @@ Ap = A + B*[k1 k2 k3];
 lambda=eig(Ap);
 
 
+%% Zadanie 3 Sprawdzenie stabilnoœci uk³adu ze sprzê¿eniem
+
+%zdefiniowanie macierzy skoœnie symetrycznej
+S = [0 s12 s13; -s12 0 s23; -s13 -s23 0];
+
+L = (Ap')*S + S*Ap;
+R = (Ap')*Q - Q*Ap;
+
+%obliczenie macierzy S
+s = inv([-7/8 200 -300; -20 -200 0; 0 1 -1607/8])*[595.3750; 840; 1.11825e+03];
+s12 = s(1);
+s13 = s(2);
+s23 = s(3);
+S = [0 s12 s13; -s12 0 s23; -s13 -s23 0];
+
+%obliczenie macierzy P
+P = 0.5*(S-Q)*inv(Ap);
+%sprawdzenie minorów
+M1 = det(P(1,1));
+M2 = det(P(1:2,1:2));
+M3 = det(P);
+
 %% Zadanie 3 Wykresy z Simulinka
 
-t = 5;
+t = 10;
 out = sim('Lapsim3');
 
 figure(4)
