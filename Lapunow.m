@@ -37,7 +37,6 @@ L = Q*(A')+ A*Q + (Y')*(B') + B*Y;
 
 %% Zadanie 2 Wykres Y z obszarem rozwi¹zañ
 
-
 y1 = -20:0.1:20;
 y2 = -20:0.1:20;
 [Y1,Y2] = meshgrid(y1,y2);
