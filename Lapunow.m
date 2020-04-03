@@ -162,7 +162,7 @@ M3 = det(P);
 
 %% Zadanie 3 Wykresy z Simulinka
 
-t = 10;
+t = 5;
 out = sim('Lapsim3');
 
 figure(4)
@@ -261,8 +261,8 @@ material('metal');
 drawnow
 %drawnow limitrate
 %pause(0.001)
-% if r == 150
-% print(1, '-dpng','wiz', '-r800')
-% end
+if r == 150
+print(5, '-dpng','wiz', '-r800')
+end
 end
 
