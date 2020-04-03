@@ -19,6 +19,7 @@ det(P);
 %sprawdzenie
 P1 = lyap(A',Q);
 
+
 %% Zadanie 2 Obliczanie L
 
 clear variables
