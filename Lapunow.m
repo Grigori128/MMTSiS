@@ -261,8 +261,5 @@ material('metal');
 drawnow
 %drawnow limitrate
 %pause(0.001)
-if r == 150
-print(5, '-dpng','wiz', '-r800')
-end
 end
 
