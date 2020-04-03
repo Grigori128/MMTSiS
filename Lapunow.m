@@ -35,7 +35,6 @@ Q = [1 -1; -1 2];
 %obliczenie macierzy L
 L = Q*(A')+ A*Q + (Y')*(B') + B*Y;
 
-
 %% Zadanie 2 Wykres Y z obszarem rozwi¹zañ
 
 y1 = -20:0.1:20;
